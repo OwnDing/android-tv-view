@@ -53,11 +53,13 @@ public class MainActivity extends Activity {
         mWebView = findViewById(R.id.webView);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setDomStorageEnabled(true); // 支持HTML5中的一些控件标签
+        // 支持HTML5中的一些控件标签
+        webSettings.setDomStorageEnabled(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setSupportZoom(true);
-        webSettings.setBuiltInZoomControls(true); // 自选，非必要
+        // 非必要设置
+        webSettings.setBuiltInZoomControls(true);
         mWebView.setInitialScale(100);
         // 处理http和https混合的问题
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -94,7 +96,7 @@ public class MainActivity extends Activity {
             dm.enqueue(request);
             Toast.makeText(getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show();
         });
-        // Replace The Link Here
+        // Replace The Link Here；此处用于链接替换
         mWebView.loadUrl("https://www.bing.com");
     }
     private static class HelloWebViewClient extends WebViewClient {
@@ -105,7 +107,7 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error){
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             handler.proceed();
         }
     }
